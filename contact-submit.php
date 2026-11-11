@@ -4,6 +4,17 @@ header('Content-Type: application/json');
 
 require __DIR__ . '/config.php';
 
+function log_contact_error(string $context, string $message): void {
+    $entry = sprintf(
+        "[%s] [%s] [%s] %s\n",
+        date('Y-m-d H:i:s'),
+        $_SERVER['REMOTE_ADDR'] ?? 'unknown',
+        $context,
+        $message
+    );
+    file_put_contents(__DIR__ . '/contact-errors.log', $entry, FILE_APPEND | LOCK_EX);
+}
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -39,6 +50,7 @@ $verify = file_get_contents(
 );
 
 if ($verify === false) {
+    log_contact_error('turnstile', 'file_get_contents falló al contactar la API de Cloudflare');
     http_response_code(500);
     exit(json_encode(['ok' => false, 'error' => 'No se pudo verificar el captcha. Intenta de nuevo.']));
 }
@@ -46,6 +58,8 @@ if ($verify === false) {
 $cf = json_decode($verify, true);
 
 if (!($cf['success'] ?? false)) {
+    $codes = implode(', ', $cf['error-codes'] ?? []);
+    log_contact_error('turnstile', "Verificación fallida. Códigos: $codes");
     http_response_code(400);
     exit(json_encode(['ok' => false, 'error' => 'Verificación de seguridad fallida. Intenta de nuevo.']));
 }
@@ -93,6 +107,7 @@ try {
     echo json_encode(['ok' => true]);
 
 } catch (Exception $e) {
+    log_contact_error('smtp', $mail->ErrorInfo ?: $e->getMessage());
     http_response_code(500);
     exit(json_encode(['ok' => false, 'error' => 'No se pudo enviar el mensaje. Intenta de nuevo más tarde.']));
 }
