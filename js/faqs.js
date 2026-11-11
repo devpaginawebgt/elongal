@@ -226,6 +226,7 @@
     var submitBtn = form.querySelector('[type="submit"]');
 
     function showStatus(ok, msg) {
+        gsap.killTweensOf(statusEl);
         statusEl.className = ok
             ? 'flex items-center gap-3 mt-4 p-4 rounded-xl bg-green-50 border border-green-200 text-green-700 text-sm font-medium'
             : 'flex items-center gap-3 mt-4 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm font-medium';
@@ -257,10 +258,10 @@
             showStatus(false, 'Por favor completa todos los campos obligatorios.');
             return;
         }
-        if (!privacy) {
-            showStatus(false, 'Debes aceptar la política de privacidad.');
-            return;
-        }
+        // if (!privacy) {
+        //     showStatus(false, 'Debes aceptar la política de privacidad.');
+        //     return;
+        // }
 
         var originalHTML     = submitBtn.innerHTML;
         submitBtn.disabled   = true;

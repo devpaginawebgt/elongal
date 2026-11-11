@@ -304,7 +304,7 @@ $faqs = [
                         </div>
 
                         <!-- Checkbox política -->
-                        <label class="flex items-start gap-3 text-sm text-gray-500 cursor-pointer select-none">
+                        <!-- <label class="flex items-start gap-3 text-sm text-gray-500 cursor-pointer select-none">
                             <input type="checkbox" id="cf-privacy" name="privacy"
                                    class="mt-0.5 w-4 h-4 shrink-0 cursor-pointer accent-(--deep-purple)">
                             <span>
@@ -313,7 +313,7 @@ $faqs = [
                                     política de privacidad
                                 </a>.
                             </span>
-                        </label>
+                        </label> -->
 
                         <!-- Turnstile -->
                         <div class="cf-turnstile" data-sitekey="0x4AAAAAAF2ibdZ8dNuTfBti"></div>
@@ -321,8 +321,7 @@ $faqs = [
                         <!-- Botón enviar -->
                         <div class="pt-2">
                             <button type="submit"
-                                    class="color-gradient-primary text-white rounded-full px-8 py-3 font-semibold text-sm flex items-center gap-2 hover:brightness-110 transition-all cursor-pointer w-full md:w-auto justify-center opacity-50"
-                                    disabled>
+                                    class="color-gradient-primary text-white rounded-full px-8 py-3 font-semibold text-sm flex items-center gap-2 hover:brightness-110 transition-all cursor-pointer w-full md:w-auto justify-center">
                                 Enviar mensaje
                                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15"
                                      viewBox="0 0 24 24" fill="none" stroke="currentColor"
