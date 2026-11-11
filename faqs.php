@@ -321,7 +321,7 @@ $faqs = [
                         <!-- Botón enviar -->
                         <div class="pt-2">
                             <button type="submit"
-                                    class="color-gradient-primary text-white rounded-full px-8 py-3 font-semibold text-sm flex items-center gap-2 hover:brightness-110 transition-all cursor-pointer w-full md:w-auto justify-center">
+                                    class="color-gradient-primary text-white rounded-full px-8 py-3 font-semibold text-sm flex items-center gap-2 hover:brightness-110 transition-all cursor-pointer w-full md:w-auto justify-center opacity-50" disabled>
                                 Enviar mensaje
                                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15"
                                      viewBox="0 0 24 24" fill="none" stroke="currentColor"
