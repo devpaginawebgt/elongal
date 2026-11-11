@@ -252,7 +252,7 @@
         var name    = form.querySelector('[name="name"]').value.trim();
         var email   = form.querySelector('[name="email"]').value.trim();
         var message = form.querySelector('[name="message"]').value.trim();
-        var privacy = form.querySelector('[name="privacy"]').checked;
+        // var privacy = form.querySelector('[name="privacy"]').checked;
 
         if (!name || !email || !message) {
             showStatus(false, 'Por favor completa todos los campos obligatorios.');
